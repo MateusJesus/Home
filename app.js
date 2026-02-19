@@ -1,4 +1,7 @@
 let taskList = [];
+let section = "sectionMercado"
+
+
 
 // Elementos da página
 const addTaskButton = document.getElementById('addTaskButton');
@@ -11,28 +14,49 @@ const taskListContainer = document.getElementById('taskList');
 const totalUrgentes = document.getElementById('totalUrgentes');
 const totalMercado = document.getElementById('totalMercado');
 
+const buttonSection = document.querySelectorAll(".setSection")
+
 // Função para atualizar a lista de tarefas na tela
 function updateTaskList() {
-  taskListContainer.innerHTML = ''; // Limpa a lista atual
 
-  taskList.forEach((task, index) => {
+  taskListContainer.innerHTML = '';
+
+  const filteredTasks = taskList.filter(task => task.section === section);
+
+  filteredTasks.forEach((task,index) => {
+
     const taskElement = document.createElement('div');
     taskElement.classList.add('item');
+
     taskElement.innerHTML = `
       <div class="info">
-        <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleTaskStatus(${index})">
-        <span contenteditable="true" onblur="updateTaskContent(${index}, this.innerText)">${task.name}</span>
+        <input type="checkbox" ${task.completed ? 'checked' : ''}>
+        <span contenteditable="true">${task.name}</span>
       </div>
-      <span class="badge ${task.priority}">${task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}</span>
+      <span class="badge ${task.priority}">
+        ${(task.priority)}
+      </span>      
+      <span class="badge" onclick="deletTask(index)">
+        lixo
+      </span>
     `;
+
+    // Toggle checkbox
+    const checkbox = taskElement.querySelector('input');
+    checkbox.addEventListener('change', () => {
+      task.completed = !task.completed;
+    });
+
+    // Editar texto
+    const span = taskElement.querySelector('span');
+    span.addEventListener('blur', (e) => {
+      task.name = e.target.innerText;
+    });
+
     taskListContainer.appendChild(taskElement);
   });
-
-  // Atualiza contagem de tarefas urgentes
-  const urgentTasks = taskList.filter(task => task.priority === 'urgente');
-  totalUrgentes.textContent = `${urgentTasks.length} tarefas`;
-  totalMercado.textContent = `${taskList.length} itens`;
 }
+
 
 // Função para adicionar nova tarefa
 function addNewTask() {
@@ -43,6 +67,7 @@ function addNewTask() {
     taskList.push({
       name: taskName,
       priority: taskPriority,
+      section: section,
       completed: false
     });
 
@@ -51,7 +76,6 @@ function addNewTask() {
     addTaskForm.style.display = 'none'; // Fechar formulário
     updateTaskList(); // Atualizar a lista de tarefas
   }
-  console.log(taskList);
 }
 
 // Função para alternar o status da tarefa (completa ou não)
@@ -79,3 +103,12 @@ cancelButton.addEventListener('click', () => {
   addTaskForm.style.display = 'flex';
 });
 
+
+function setSection(params) {
+  section = params.id
+
+  buttonSection.forEach(btn => btn.classList.remove('gradiente'))
+  params.classList.add("gradiente")
+
+  updateTaskList()
+}
