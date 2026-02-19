@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa+</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Premium -->
+  <header class="header">
+    <div>
+      <h1>Casa+</h1>
+      <p>Organize sua rotina com leveza ✨</p>
+    </div>
+  </header>
+
+  <!-- Resumo -->
+  <section class="resumo">
+    <div class="card gradiente">
+      <h3>🔥 Urgentes</h3>
+      <p id="totalUrgentes">0 tarefas</p>
+    </div>
+
+    <div class="card">
+      <h3>🛒 Mercado</h3>
+      <p id="totalMercado">0 itens</p>
+    </div>
+  </section>
+
+  <!-- Lista Principal -->
+  <section class="lista">
+    <div id="taskList" class="task-list">
+      <!-- Tarefas serão inseridas aqui -->
+    </div>
+  </section>
+
+  <!-- Formulário de Nova Tarefa (oculto inicialmente) -->
+  <div id="addTaskForm" class="add-task-form">
+    <div>
+        <input id="newTaskInput" type="text" placeholder="Digite a tarefa...">
+        <select id="prioritySelect">
+            <option value="urgente">Urgente</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+        </select>
+    </div>
+    <div>
+        <button id="saveTaskButton">Salvar</button>
+        <button id="cancelButton">Cancelar</button>
+    </div>
+</div>
+
+  <!-- Botão Flutuante -->
+  <button class="fab" id="addTaskButton">+</button>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

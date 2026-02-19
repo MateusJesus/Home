@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  padding-bottom: 100px;
+}
+
+/* Header */
+.header {
+  padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.header p {
+  opacity: 0.9;
+}
+
+/* Resumo */
+.resumo {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  margin-top: -30px;
+}
+
+.card {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.gradiente {
+  background: linear-gradient(135deg, #ff6a88, #ff99ac);
+  color: white;
+}
+
+/* Lista */
+.lista {
+  padding: 0 20px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  transition: 0.2s;
+}
+
+.item:hover {
+  transform: translateY(-2px);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+/* Badges */
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.urgente {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.media {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.baixa {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* Botão flutuante */
+.fab {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 28px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  box-shadow: 0 15px 30px rgba(99,102,241,0.4);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+}
+
+/* Formulário de Nova Tarefa */
+.add-task-form {
+  display: none;
+  position: fixed;
+  align-items:center;
+  justify-content: space-between;
+  bottom: 80px;
+  left: 20px;
+  right: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  gap: 10px;
+  flex-direction: row;
+}
+
+.add-task-form input,
+.add-task-form select,
+.add-task-form button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.add-task-form button {
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.add-task-form button:hover {
+  background: #4f46e5;
+}
+
+.add-task-form #cancelButton {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.add-task-form #cancelButton:hover {
+  background: #e0e0e0;
+}
