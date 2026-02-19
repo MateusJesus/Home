@@ -175,3 +175,16 @@ input[type="checkbox"] {
 .add-task-form #cancelButton:hover {
   background: #e0e0e0;
 }
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #f44336;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+}

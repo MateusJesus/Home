@@ -23,7 +23,7 @@ function updateTaskList() {
 
   const filteredTasks = taskList.filter(task => task.section === section);
 
-  filteredTasks.forEach((task,index) => {
+  filteredTasks.forEach((task) => {
 
     const taskElement = document.createElement('div');
     taskElement.classList.add('item');
@@ -33,12 +33,14 @@ function updateTaskList() {
         <input type="checkbox" ${task.completed ? 'checked' : ''}>
         <span contenteditable="true">${task.name}</span>
       </div>
-      <span class="badge ${task.priority}">
-        ${(task.priority)}
-      </span>      
-      <span class="badge" onclick="deletTask(index)">
-        lixo
-      </span>
+      
+      <div class="info">      
+        <span class="badge ${task.priority}">
+          ${(task.priority)}
+        </span>      
+        <button class="delete-btn" onclick="deleteTask(${task.id})">🗑️</button>
+      </div>
+      
     `;
 
     // Toggle checkbox
@@ -65,6 +67,7 @@ function addNewTask() {
 
   if (taskName) {
     taskList.push({
+      id: Date.now(),
       name: taskName,
       priority: taskPriority,
       section: section,
@@ -111,4 +114,12 @@ function setSection(params) {
   params.classList.add("gradiente")
 
   updateTaskList()
+}
+
+function deleteTask(taskId) {
+  // Filtra a lista de tarefas, removendo a tarefa com o id correspondente
+
+  taskList = taskList.filter(task => task.id !== taskId);
+
+  updateTaskList();
 }
